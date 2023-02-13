@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		"outDir": "./build/",
+		"strictNullChecks": true,
 
 		// Подсвечивает все места где не указан тип
 		// Однако это не означает, что теперь вовсе нельзя использовать any.
@@ -14,7 +15,10 @@
 		"allowJs": true,
 		"moduleResolution": "node",
 		// Для абсолютного импорта
-		"baseUrl": ".",
+		"baseUrl": ".", 
+		"paths": {
+			"*": ["./src/*"]
+		},
 		// esModuleInterop позволяет работать с пакетами, которые используют
 		// common js как с обычными пакета с помощью import (require() module.export) = common js
 		// import Moment from 'moment';
@@ -30,6 +34,7 @@
 		// import * as React from 'react';
 		// можно писать такой
 		// import React from 'react';
+		"extendedDiagnostics": false,
 		"allowSyntheticDefaultImports": true,
 		"sourceMap": true,
 		"plugins": [{ "name": "typescript-plugin-css-modules" }]

@@ -1,6 +1,6 @@
 import path from 'path';
-import webpack from 'webpack'; //to access built-in plugins
-import { BuildPaths, BuildEnv } from './config/build/types/config';
+import type webpack from 'webpack'; // to access built-in plugins
+import { type BuildPaths, type BuildEnv } from './config/build/types/config';
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
 
 export default (env: BuildEnv): webpack.Configuration => {
@@ -8,10 +8,11 @@ export default (env: BuildEnv): webpack.Configuration => {
 		entry: path.resolve(__dirname, 'src', 'index.tsx'),
 		build: path.resolve(__dirname, 'build'),
 		html: path.resolve(__dirname, 'public', 'index.html'),
+		src: path.resolve(__dirname, 'src'),
 	};
 
-	const mode = env.mode || 'development';
-	const port = env.port || 3007;
+	const mode = env.mode ?? 'development';
+	const port = env.port ?? 3007;
 	const isDev = mode === 'development';
 
 	return buildWebpackConfig({
@@ -20,4 +21,4 @@ export default (env: BuildEnv): webpack.Configuration => {
 		paths,
 		isDev,
 	});
-}
+};
